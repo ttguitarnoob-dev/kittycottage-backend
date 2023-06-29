@@ -1,8 +1,15 @@
 const express = require('express')
 const app = express()
 const methodOverride = require
-('method-override')
+    ('method-override')
+
+//DB Connection
 const mongoose = require('mongoose')
+const URI = "mongodb+srv://travisthompsondev:0mHoTOGqKkuskXvy@todo.aznwlke.mongodb.net/?retryWrites=true&w=majority/test"
+mongoose.connect(URI)
+.then(console.log('mongo connected'))
+const Test = require('./models/test')
+
 
 //Configuration
 const PORT = 8000
@@ -10,7 +17,7 @@ const PORT = 8000
 
 //Middleware
 app.use(methodOverride('_method'))
-app.use(express.urlencoded({extended: false}))
+app.use(express.urlencoded({ extended: false }))
 
 //Home Route
 app.get('/', (req, res) => {
