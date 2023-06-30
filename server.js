@@ -5,7 +5,7 @@ const methodOverride = require
 
 //DB Connection
 const mongoose = require('mongoose')
-const URI = "mongodb+srv://travisthompsondev:0mHoTOGqKkuskXvy@todo.aznwlke.mongodb.net/test"
+const URI = "suckmynuts"
 mongoose.connect(URI)
 .then(console.log('mongo connected'))
 const Test = require('./models/test')
