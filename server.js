@@ -5,7 +5,7 @@ const methodOverride = require
 
 //DB Connection
 const mongoose = require('mongoose')
-const URI = "mongodb+srv://travisthompsondev:0mHoTOGqKkuskXvy@todo.aznwlke.mongodb.net/?retryWrites=true&w=majority/test"
+const URI = "mongodb+srv://travisthompsondev:0mHoTOGqKkuskXvy@todo.aznwlke.mongodb.net/test"
 mongoose.connect(URI)
 .then(console.log('mongo connected'))
 const Test = require('./models/test')
@@ -40,7 +40,11 @@ app.get('/items/new', (req, res) => {
 //Create Route
 app.post('/items', (req, res) => {
     console.log('create items')
-    res.send('Hello from creating')
+    Test.create(req.body)
+    res.json({
+        status: 200,
+        message: "created thing"
+    })
 })
 
 //Delete Route

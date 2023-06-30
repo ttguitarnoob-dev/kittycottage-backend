@@ -6,6 +6,11 @@ const testsSchema = new mongoose.Schema({
         type: String,
         require: true, default: "Bernard"
     },
+    age: Number,
+    ugly: {
+        type: Boolean,
+        default: true
+    }
     
 
 }, {timestamps: true})
