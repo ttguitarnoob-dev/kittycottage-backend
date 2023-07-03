@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 })
 
 //Show Route
-router.get('/items/:id', (req, res) => {
+router.get('/:id', (req, res) => {
     console.log('show route', req.body)
     res.send("hellow from show route")
 })
@@ -31,14 +31,18 @@ router.get('/items/new', (req, res) => {
 })
 
 //Create Route
-router.post('/', (req, res) => {
-    console.log('hitting create route yayaya', req.body)
-    Todo.create(req.body)
-    res.json({
-        status: 200,
-        item: req.body,
-        message: `Created successfully`
-    })
+router.post('/', async (req, res) => {
+    try {
+        console.log('hitting create route yayaya', req.body)
+        Todo.create(req.body)
+        res.json({
+            status: 200,
+            item: req.body,
+            message: `Created successfully`
+        }) 
+    } catch(err){
+        res.send("Create route error", err)
+    }
 })
 
 //Delete Route
