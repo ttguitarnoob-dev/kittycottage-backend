@@ -7,14 +7,20 @@ const router = express.Router()
 
 
 //Index
-router.get('/', (req, res) => {
-    console.log('items route')
-    res.send("hello from the index route")
+router.get('/', async (req, res) => {
+    try {
+        const allTodos = await Todo.find()
+        console.log('hello from index route', allTodos)
+        res.json(allTodos)
+    } catch(err) {
+        res.send("index route error", err)
+    }
+    
 })
 
 //Show Route
 router.get('/items/:id', (req, res) => {
-    console.log('show route')
+    console.log('show route', req.body)
     res.send("hellow from show route")
 })
 
