@@ -3,11 +3,13 @@ const app = express()
 const methodOverride = require
     ('method-override')
 
+
+
 //DB Connection
 const mongoose = require('mongoose')
-const URI = "suckmynuts"
+const URI = require("./uri")
 mongoose.connect(URI)
-.then(console.log('mongo connected'))
+.then(console.log('mongo connected at', URI))
 const Test = require('./models/test')
 
 
@@ -39,11 +41,11 @@ app.get('/items/new', (req, res) => {
 
 //Create Route
 app.post('/items', (req, res) => {
-    console.log('create items')
     Test.create(req.body)
     res.json({
         status: 200,
-        message: "created thing"
+        item: req.body,
+        message: `Created successfully`
     })
 })
 
