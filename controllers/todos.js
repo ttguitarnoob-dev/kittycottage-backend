@@ -1,26 +1,33 @@
 const express = require('express')
-
-
+const Todo = require('../models/todo')
+const router = express.Router()
 
 
 
 
 
 //Index
-app.get('/items', (req, res) => {
+router.get('/', (req, res) => {
     console.log('items route')
     res.send("hello from the index route")
 })
 
+//Show Route
+router.get('/items/:id', (req, res) => {
+    console.log('show route')
+    res.send("hellow from show route")
+})
+
 //New Item
-app.get('/items/new', (req, res) => {
+router.get('/items/new', (req, res) => {
     console.log('new item')
     res.send('Hello from new item route')
 })
 
 //Create Route
-app.post('/items', (req, res) => {
-    Test.create(req.body)
+router.post('/', (req, res) => {
+    console.log('hitting create route yayaya', req.body)
+    Todo.create(req.body)
     res.json({
         status: 200,
         item: req.body,
@@ -29,13 +36,15 @@ app.post('/items', (req, res) => {
 })
 
 //Delete Route
-app.delete('/items/:id', (req, res) => {
+router.delete('/items/:id', (req, res) => {
     console.log('delete route')
     res.send('hello from delete route')
 })
 
 //Edit Route
-app.put('/items/:id', (req, res) => {
+router.put('/items/:id', (req, res) => {
     console.log('edit route')
     res.send('Hello from the edit route')
 })
+
+module.exports = router

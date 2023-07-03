@@ -6,12 +6,12 @@ const todoSchema = new mongoose.Schema({
         type: String,
         require: true, default: "Pet your husband"
     },
-    
+
     completed: {
         type: Boolean,
-        default: false
+        require: true, default: false
     }
 })
 
-const Todo = mongoose.model("Todo", todoSchema)
+const Todo = mongoose.model("todo", todoSchema)
 module.exports = Todo
