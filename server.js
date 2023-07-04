@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-
+const cors = require('cors')
 const methodOverride = require
     ('method-override')
 
@@ -20,10 +20,21 @@ const Todo = require('./models/todo')
 
 //Configuration
 const PORT = 8000
-
+const acceptList = ["http://localhost:3000"]
+const options = {
+    origin: function(origin, callback){
+        console.log('origin', origin)
+        if (acceptList.indexOf(origin) !== -1 || !origin){
+            callback(null, true)
+        } else {
+            callback( new Error ("Not allowed by Cors, bro"))
+        }
+    }
+}
 
 
 //Middleware
+app.use(cors(options))
 app.use(methodOverride('_method'))
 app.use(express.urlencoded({ extended: false }))
 app.use('/todos', todoController)
