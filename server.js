@@ -5,7 +5,7 @@ const methodOverride = require
     ('method-override')
 
 
-//Controller
+//Controllers
 todoController = require('./controllers/todos')
 
 
