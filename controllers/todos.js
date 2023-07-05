@@ -46,9 +46,10 @@ router.post('/', async (req, res) => {
 })
 
 //Delete Route
-router.delete('/items/:id', (req, res) => {
-    console.log('delete route')
-    res.send('hello from delete route')
+router.delete('/:id', async (req, res) => {
+    const oneTask = await Todo.findByIdAndDelete(req.params.id)
+    console.log("die, task", oneTask)
+    res.json(oneTask)
 })
 
 //Edit Route
