@@ -20,7 +20,7 @@ const Todo = require('./models/todo')
 
 //Configuration
 const PORT = 8000
-const acceptList = ["http://10.24.24.225:3000", "http://localhost:3000"]
+const acceptList = ["http://10.24.24.225:3000", "http://localhost:3000","https://boarddash.ttguitarnoob.cloud"]
 const options = {
     origin: function(origin, callback){
         console.log('origin', origin)
