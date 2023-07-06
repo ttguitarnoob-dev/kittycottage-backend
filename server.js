@@ -7,6 +7,7 @@ const methodOverride = require
 
 //Controllers
 todoController = require('./controllers/todos')
+budgetController = require('./controllers/budgets')
 
 
 //DB Connection
@@ -39,6 +40,7 @@ app.use(cors(options))
 app.use(methodOverride('_method'))
 app.use(express.urlencoded({ extended: false }))
 app.use('/todos', todoController)
+app.use('/budgets', budgetController)
 
 //Home Route
 app.get('/', (req, res) => {
