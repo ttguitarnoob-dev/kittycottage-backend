@@ -16,6 +16,7 @@ mongoose.connect(URI)
 .then(console.log('mongo connected at', URI))
 const Test = require('./models/test')
 const Todo = require('./models/todo')
+const Budget = require('./models/budget')
 
 
 //Configuration
