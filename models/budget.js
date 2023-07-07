@@ -21,21 +21,6 @@ const budgetSchema = new mongoose.Schema({
     paidDate: {
         type: String,
         require: true, default: "Tomorrow"
-    },
-
-    purchases: {
-        type: String,
-        require: true, default: "Coffee"
-    },
-
-    purchaseAmount: {
-        type: String,
-        require: true, default: "6.25"
-    },
-
-    purchaseDate: {
-        type: String,
-        require: true, default: "Today"
     }
 })
 
