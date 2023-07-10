@@ -13,7 +13,7 @@ const testsSchema = new mongoose.Schema({
     }
     
 
-}, {timestamps: true})
+}, {timestamps: {createdAt: "created_at", updatedAt: "updated_at"}})
 
 const Test = mongoose.model("Test", testsSchema)
 

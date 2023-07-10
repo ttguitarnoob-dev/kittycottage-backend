@@ -11,7 +11,7 @@ const todoSchema = new mongoose.Schema({
         type: Boolean,
         require: true, default: false
     }
-})
+}, {timestamps: {createdAt: "created_at", updatedAt: "updated_at"}})
 
 const Todo = mongoose.model("todo", todoSchema)
 module.exports = Todo
