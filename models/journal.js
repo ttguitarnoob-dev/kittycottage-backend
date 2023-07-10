@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const journalsSchema = new mongoose.Schema({
-   
+
     hilow: {
         type: String,
         require: true, default: "I had a high and a low today."
@@ -23,9 +23,14 @@ const journalsSchema = new mongoose.Schema({
     failImprove: {
         type: String,
         require: true, default: "Failing will help me improve things."
+    },
+
+    date: {
+        type: String,
+        require: true, default: new Date().toDateString()
     }
 
-}, {timestamps: {createdAt: "created_at", updatedAt: "updated_at"}})
+}, { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } })
 
 const Journal = mongoose.model("journal", journalsSchema)
 
