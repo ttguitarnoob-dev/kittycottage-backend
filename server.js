@@ -8,6 +8,7 @@ const methodOverride = require
 //Controllers
 todoController = require('./controllers/todos')
 budgetController = require('./controllers/budgets')
+journalController = require('./controllers/journals')
 
 
 //DB Connection
@@ -18,6 +19,7 @@ mongoose.connect(URI)
 const Test = require('./models/test')
 const Todo = require('./models/todo')
 const Budget = require('./models/budget')
+const Journal = require('./models/journal')
 
 
 //Configuration
@@ -41,6 +43,7 @@ app.use(methodOverride('_method'))
 app.use(express.urlencoded({ extended: false }))
 app.use('/todos', todoController)
 app.use('/budgets', budgetController)
+app.use('/journals', journalController)
 
 //Home Route
 app.get('/', (req, res) => {
