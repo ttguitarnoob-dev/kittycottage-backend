@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
         const allJournals = await Journal.find()
         console.log('hello from index route', allJournals)
         res.json(allJournals)
-    } catch(err) {
+    } catch (err) {
         res.send("index route error", err)
     }
 
@@ -26,10 +26,15 @@ router.post('/', async (req, res) => {
     // res.send("Hello from journal post route")
     try {
         console.log('hitting create route yayaya', req.body)
-        Journal.create(req.body)
+        data = req.body
+        data.date = new Date().toDateString()
+
+        console.log('now data', data)
+
+        Journal.create(data)
         res.json({
             status: 200,
-            item: req.body,
+            item: data,
             message: `Created successfully`
         })
     } catch (err) {

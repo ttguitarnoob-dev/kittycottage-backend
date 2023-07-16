@@ -27,7 +27,7 @@ const journalsSchema = new mongoose.Schema({
 
     date: {
         type: String,
-        require: true, default: new Date().toDateString()
+        require: true, default: new Date().toDateString
     }
 
 }, { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } })
