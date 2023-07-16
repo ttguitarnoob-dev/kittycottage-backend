@@ -19,6 +19,17 @@ router.get('/', async (req, res) => {
 
 })
 
+//Show
+router.get('/:id', async (req, res) => {
+    try {
+        const oneJournal = await Journal.findById(req.params.id)
+        console.log('id?', req.params.id)
+        res.json(oneJournal)
+    } catch (err) {
+        console.log('something broke when fetching one', err)
+    }
+})
+
 
 //Create Route
 router.post('/', async (req, res) => {
