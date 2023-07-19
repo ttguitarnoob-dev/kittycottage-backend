@@ -35,3 +35,5 @@ const journalsSchema = new mongoose.Schema({
 const Journal = mongoose.model("journal", journalsSchema)
 
 module.exports = Journal
+
+console.log('Journal model loaded')

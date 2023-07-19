@@ -9,6 +9,7 @@ const methodOverride = require
 todoController = require('./controllers/todos')
 budgetController = require('./controllers/budgets')
 journalController = require('./controllers/journals')
+countdownController = require('./controllers/countdowns')
 
 
 //DB Connection
@@ -20,6 +21,7 @@ const Test = require('./models/test')
 const Todo = require('./models/todo')
 const Budget = require('./models/budget')
 const Journal = require('./models/journal')
+const Countdown = require('./models/countdown')
 
 
 //Configuration
@@ -44,6 +46,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use('/todos', todoController)
 app.use('/budgets', budgetController)
 app.use('/journals', journalController)
+app.use('/countdowns', countdownController)
 
 //Home Route
 app.get('/', (req, res) => {

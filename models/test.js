@@ -18,3 +18,4 @@ const testsSchema = new mongoose.Schema({
 const Test = mongoose.model("Test", testsSchema)
 
 module.exports = Test
+

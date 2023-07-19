@@ -15,3 +15,4 @@ const todoSchema = new mongoose.Schema({
 
 const Todo = mongoose.model("todo", todoSchema)
 module.exports = Todo
+console.log('Todo model loaded')

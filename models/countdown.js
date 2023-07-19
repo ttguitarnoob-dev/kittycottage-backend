@@ -7,11 +7,12 @@ const countdownSchema = new mongoose.Schema({
         require: true, default: "New Countdown"
     },
 
-    deadline: {
+    date: {
         type: String,
         require: true, default: "12/25/2024"
     }
 }, {timestamps: {createdAt: "created_at", updatedAt: "updated_at"}})
 
-const Countdown = mongoose.model("todo", countdownSchema)
+const Countdown = mongoose.model("countdown", countdownSchema)
 module.exports = Countdown
+console.log('Countdown model loaded')
