@@ -21,6 +21,7 @@ router.get('/', async (req, res) => {
 //Show Route
 router.get('/:id', (req, res) => {
     console.log('show route', req.body)
+
     res.send("hellow from show route")
 })
 
