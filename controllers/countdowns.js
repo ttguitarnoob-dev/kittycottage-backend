@@ -42,10 +42,10 @@ router.post('/', async (req, res) => {
         const dt = new Date(req.body.date).getTime();
         console.log('changed date', dt)
         data.date = dt
-        Countdown.create(data)
+        Countdown.create(req.body)
         res.json({
             status: 200,
-            item: data,
+            item: req.body,
             message: `Created successfully`
         })
     } catch (err) {
