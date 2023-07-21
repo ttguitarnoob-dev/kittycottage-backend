@@ -42,7 +42,7 @@ router.post('/', async (req, res) => {
         const dt = new Date(req.body.date).getTime();
         console.log('changed date', dt)
         data.date = dt
-        // Countdown.create(data)
+        Countdown.create(data)
         res.json({
             status: 200,
             item: data,
