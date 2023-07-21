@@ -38,9 +38,11 @@ router.post('/', async (req, res) => {
     try {
         console.log('hitting create route yayaya', req.body)
         data = req.body
+        console.log('received date', req.body.date)
         const dt = new Date(req.body.date).getTime();
+        console.log('changed date', dt)
         data.date = dt
-        Countdown.create(data)
+        // Countdown.create(data)
         res.json({
             status: 200,
             item: data,
