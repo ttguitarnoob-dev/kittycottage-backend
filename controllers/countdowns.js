@@ -56,11 +56,12 @@ router.post('/', async (req, res) => {
 //Delete
 router.delete('/:id', async (req, res) => {
     try {
-        // const oneCountdown = await Countdown.findByIdAndDelete(req.params.id)
-        // console.log("you're useless", oneCountdown)
-        // res.json(oneCountdown)
-        console.log('hello from delete route', req.params)
-        res.status()
+        console.log('hello from delete route', req.params.id)
+        const oneCountdown = await Countdown.findByIdAndDelete(req.params.id)
+        console.log("you're useless", oneCountdown)
+        res.json(oneCountdown)
+       
+        
     } catch (err) {
         console.log('somethign broke when deleting', err)
     }
