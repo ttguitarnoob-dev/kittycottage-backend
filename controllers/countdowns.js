@@ -54,7 +54,7 @@ router.post('/', async (req, res) => {
 })
 
 //Delete
-router.get('/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
         // const oneCountdown = await Countdown.findByIdAndDelete(req.params.id)
         // console.log("you're useless", oneCountdown)
