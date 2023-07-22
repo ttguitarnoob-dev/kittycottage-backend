@@ -53,5 +53,17 @@ router.post('/', async (req, res) => {
     }
 })
 
+//Delete
+router.get('/:id', async (req, res) => {
+    try {
+        // const oneCountdown = await Countdown.findByIdAndDelete(req.params.id)
+        // console.log("you're useless", oneCountdown)
+        // res.json(oneCountdown)
+        res.send('delete route working', req.params)
+    } catch (err) {
+        console.log('somethign broke when deleting', err)
+    }
+})
+
 
 module.exports = router
