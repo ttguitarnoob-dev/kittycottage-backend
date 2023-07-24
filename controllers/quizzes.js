@@ -1,0 +1,78 @@
+const express = require('express')
+const Quiz = require('../models/quiz')
+const router = express.Router()
+
+
+
+
+
+//Index
+router.get('/', async (req, res) => {
+    res.send("Hello from quiz index route")
+    // try {
+    //     const allCountdowns = await Countdown.find()
+    //     console.log('hello from index route', allCountdowns)
+    //     res.json(allCountdowns)
+    // } catch (err) {
+    //     res.send("index route error", err)
+    // }
+
+})
+
+//Show
+router.get('/:id', async (req, res) => {
+    res.send("hello from show route")
+    // try {
+    //     const oneCountdown = await Countdown.findById(req.params.id)
+    //     console.log('id?', req.params.id)
+    //     res.json(oneCountdown)
+    // } catch (err) {
+    //     console.log('something broke when fetching one', err)
+    // }
+})
+
+
+//Create Route
+router.post('/', async (req, res) => {
+
+    res.send("Hello from quiz post route")
+    // try {
+    //     console.log('hitting create route yayaya', req.body)
+    //     // data = req.body
+    //     console.log('received date', req.body.date)
+    //     // const dt = new Date(req.body.date).getTime();
+    //     // console.log('changed date', dt)
+    //     // data.date = dt
+    //     Countdown.create(req.body)
+    //     res.json({
+    //         status: 200,
+    //         item: req.body,
+    //         message: `Created successfully`
+    //     })
+    // } catch (err) {
+    //     res.status(err).send("bad things")
+    // }
+})
+
+//Delete
+router.delete('/:id', async (req, res) => {
+    res.send('hello from delete route')
+    // try {
+    //     console.log('hello from delete route', req.params.id)
+    //     const oneCountdown = await Countdown.findByIdAndDelete(req.params.id)
+    //     console.log("you're useless", oneCountdown)
+    //     res.json(oneCountdown)
+       
+        
+    // } catch (err) {
+    //     console.log('somethign broke when deleting', err)
+    // }
+})
+
+//Update
+router.put('/:id', async (req, res) => {
+    res.send('hello from update route')
+})
+
+
+module.exports = router

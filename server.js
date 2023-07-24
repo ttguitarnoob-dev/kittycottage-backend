@@ -22,6 +22,7 @@ const Todo = require('./models/todo')
 const Budget = require('./models/budget')
 const Journal = require('./models/journal')
 const Countdown = require('./models/countdown')
+const Quiz = require('./models/quiz')
 
 
 //Configuration
