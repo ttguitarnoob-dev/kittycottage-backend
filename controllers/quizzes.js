@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
 
 //Show
 router.get('/:id', async (req, res) => {
-    res.send("hello from show route")
+    res.send("hello from show route", req.body)
     // try {
     //     const oneCountdown = await Countdown.findById(req.params.id)
     //     console.log('id?', req.params.id)
@@ -35,7 +35,8 @@ router.get('/:id', async (req, res) => {
 //Create Route
 router.post('/', async (req, res) => {
 
-    res.send("Hello from quiz post route")
+    // res.status(200).send(`Hello from post route`)
+    res.json(req.body)
     // try {
     //     console.log('hitting create route yayaya', req.body)
     //     // data = req.body

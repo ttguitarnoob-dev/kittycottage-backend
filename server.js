@@ -10,6 +10,7 @@ todoController = require('./controllers/todos')
 budgetController = require('./controllers/budgets')
 journalController = require('./controllers/journals')
 countdownController = require('./controllers/countdowns')
+quizController = require('./controllers/quizzes')
 
 
 //DB Connection
@@ -48,6 +49,7 @@ app.use('/todos', todoController)
 app.use('/budgets', budgetController)
 app.use('/journals', journalController)
 app.use('/countdowns', countdownController)
+app.use('/quizzes', quizController)
 
 //Home Route
 app.get('/', (req, res) => {
