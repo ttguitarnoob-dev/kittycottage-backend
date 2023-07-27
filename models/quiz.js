@@ -11,20 +11,21 @@ const quizSchema = new mongoose.Schema({
         type: Date,
     },
 
-    Subject: {
+    subject: {
         type: String,
         require: true, default: "General Learning"
     },
 
-    Score: {
+    score: {
         type: Number,
         require: true, default: 0
     },
 
-    Questions: [
+    questions: [
         {
             question: {
                 type: String,
+                require: true, default: "This is a question"
             },
 
             answer: {
@@ -33,21 +34,19 @@ const quizSchema = new mongoose.Schema({
             },
 
             choice: {
-                type: String
+                type: String,
+                require: true, default: "b"
             },
 
             choices: [
-                {
-                    a: String,
-                    b: String,
-                    c: String,
-                    d: String
-                },
-
-                
+                {a: String},
+                {b: String},
+                {c: String},
+                {d: String},
             ],
 
-            correct: Boolean
+            correct: Boolean,
+    
 
 
         }

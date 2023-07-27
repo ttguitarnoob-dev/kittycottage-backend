@@ -8,14 +8,13 @@ const router = express.Router()
 
 //Index
 router.get('/', async (req, res) => {
-    res.send("Hello from quiz index route")
-    // try {
-    //     const allCountdowns = await Countdown.find()
-    //     console.log('hello from index route', allCountdowns)
-    //     res.json(allCountdowns)
-    // } catch (err) {
-    //     res.send("index route error", err)
-    // }
+    try {
+        const allQuizzes = await Quiz.find()
+        console.log('hello from index route', allQuizzes)
+        res.json(allQuizzes)
+    } catch (err) {
+        res.send("index route error", err)
+    }
 
 })
 
@@ -36,23 +35,22 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
 
     // res.status(200).send(`Hello from post route`)
-    res.json(req.body)
-    // try {
-    //     console.log('hitting create route yayaya', req.body)
-    //     // data = req.body
-    //     console.log('received date', req.body.date)
-    //     // const dt = new Date(req.body.date).getTime();
-    //     // console.log('changed date', dt)
-    //     // data.date = dt
-    //     Countdown.create(req.body)
-    //     res.json({
-    //         status: 200,
-    //         item: req.body,
-    //         message: `Created successfully`
-    //     })
-    // } catch (err) {
-    //     res.status(err).send("bad things")
-    // }
+    // res.json(req.body)
+    try {
+        console.log('hitting create route yayaya', req.body)
+        // data = req.body
+        // const dt = new Date(req.body.date).getTime();
+        // console.log('changed date', dt)
+        // data.date = dt
+        Quiz.create(req.body)
+        res.json({
+            status: 200,
+            item: req.body,
+            message: `Created successfully`
+        })
+    } catch (err) {
+        res.status(err).send("bad things")
+    }
 })
 
 //Delete
