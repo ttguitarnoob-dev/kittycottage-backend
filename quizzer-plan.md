@@ -31,3 +31,17 @@
     - choose how many questions (stretch goal, short answer questions)
     - based on how many questions, form created with fields for each question 1-chosenAmount (or one form at a time for each question if I can manage to figure out how to do state based page renders)
 7. 
+
+
+##Layout
+
+###Kiara's Side
+Index page, showing table of all quizzes with score/completed...new quiz button
+New quiz page
+Quiz show page showing all answers
+Maybe quiz edit page
+
+###Hazel's side
+Index page showing all quizes with score/completed
+Show page, with "put" functionality, allowing her to take the quiz and save the answers.
+Maybe another show page that just allows viewing of answers (if quiz has been completed)
