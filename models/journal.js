@@ -25,6 +25,11 @@ const journalsSchema = new mongoose.Schema({
         require: true, default: "Failing will help me improve things."
     },
 
+    bible: {
+        type: String,
+        require: true, default: "I read a good verse and it meant a lot to me."
+    },
+
     date: {
         type: String,
         require: true, default: new Date().toDateString
