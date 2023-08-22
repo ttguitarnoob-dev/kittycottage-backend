@@ -28,7 +28,7 @@ const Quiz = require('./models/quiz')
 
 //Configuration
 const PORT = 8000
-const acceptList = ["http://10.24.24.225:3000", "http://10.24.24.236:3000", "http://localhost:3000","https://boarddash.ttguitarnoob.cloud"]
+const acceptList = ["http://10.24.24.225:3000", "http://10.24.24.236:3000", "http://localhost:3000","https://boarddash.ttguitarnoob.cloud", "https://hazelnet.ttguitarnoob.cloud"]
 const options = {
     origin: function(origin, callback){
         console.log('origin', origin)
