@@ -44,7 +44,8 @@ const options = {
 //Middleware
 app.use(cors(options))
 app.use(methodOverride('_method'))
-app.use(express.urlencoded({ extended: false }))
+app.use(express.json())
+// app.use(express.urlencoded({ extended: false }))
 app.use('/todos', todoController)
 app.use('/budgets', budgetController)
 app.use('/journals', journalController)
