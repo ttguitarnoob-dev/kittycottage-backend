@@ -11,6 +11,8 @@ budgetController = require('./controllers/budgets')
 journalController = require('./controllers/journals')
 countdownController = require('./controllers/countdowns')
 quizController = require('./controllers/quizzes')
+kizziJournalController = require('./controllers/kizzijournals')
+
 
 
 //DB Connection
@@ -18,12 +20,12 @@ const mongoose = require('mongoose')
 const URI = require("./uri")
 mongoose.connect(URI)
 .then(console.log('mongo connected at', URI))
-const Test = require('./models/test')
-const Todo = require('./models/todo')
-const Budget = require('./models/budget')
-const Journal = require('./models/journal')
-const Countdown = require('./models/countdown')
-const Quiz = require('./models/quiz')
+// const Test = require('./models/test')
+// const Todo = require('./models/todo')
+// const Budget = require('./models/budget')
+// const Journal = require('./models/journal')
+// const Countdown = require('./models/countdown')
+// const Quiz = require('./models/quiz')
 
 
 //Configuration
@@ -51,6 +53,7 @@ app.use('/budgets', budgetController)
 app.use('/journals', journalController)
 app.use('/countdowns', countdownController)
 app.use('/quizzes', quizController)
+app.use('/kizzi-journals', kizziJournalController)
 
 //Home Route
 app.get('/', (req, res) => {
