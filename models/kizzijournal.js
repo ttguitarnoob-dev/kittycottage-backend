@@ -13,6 +13,6 @@ const kizziJournalSchema = new mongoose.Schema({
     }
 }, {timestamps: {createdAt: "created_at", updatedAt: "updated_at"}})
 
-const KizziJournal = mongoose.model("countdown", kizziJournalSchema)
+const KizziJournal = mongoose.model("kizzijournal", kizziJournalSchema)
 module.exports = KizziJournal
 console.log('Kizzi Journal model loaded')
