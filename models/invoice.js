@@ -29,6 +29,10 @@ const invoiceSchema = new mongoose.Schema({
     paid: {
         type: Boolean,
         require: true, default: false
+    },
+    total: {
+        type: Number,
+        require: true, default: 0
     }
 }, { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } })
 
