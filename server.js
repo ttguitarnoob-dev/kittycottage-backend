@@ -12,6 +12,7 @@ journalController = require('./controllers/journals')
 countdownController = require('./controllers/countdowns')
 quizController = require('./controllers/quizzes')
 kizziJournalController = require('./controllers/kizzijournals')
+invoiceController = require('./controllers/invoices')
 
 
 
@@ -45,15 +46,18 @@ const options = {
 
 //Middleware
 app.use(cors(options))
-app.use(methodOverride('_method'))
+
 app.use(express.json())
-// app.use(express.urlencoded({ extended: false }))
+
 app.use('/todos', todoController)
 app.use('/budgets', budgetController)
 app.use('/journals', journalController)
 app.use('/countdowns', countdownController)
 app.use('/quizzes', quizController)
 app.use('/kizzi-journals', kizziJournalController)
+app.use('/invoices', invoiceController)
+app.use(express.urlencoded({ extended: false }))
+app.use(methodOverride('_method'))
 
 //Home Route
 app.get('/', (req, res) => {
