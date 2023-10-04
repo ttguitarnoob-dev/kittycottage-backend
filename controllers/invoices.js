@@ -62,5 +62,18 @@ router.delete('/:id', async (req, res) => {
     }
 })
 
+router.put('/:id', async (req, res) => {
+    try {
+        const updatedItem = await Invoice.findByIdAndUpdate(req.params.id, req.body, {new: true})
+        res.json(updatedItem)
+    } catch (err) {
+        res.status(400).json({
+            message: "Something went horrendoulsy awry when fetching duck data"
+        })
+    }
+    
+
+})
+
 
 module.exports = router
