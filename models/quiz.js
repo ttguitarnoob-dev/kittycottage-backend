@@ -38,12 +38,7 @@ const quizSchema = new mongoose.Schema({
                 require: true, default: 0
             },
 
-            choices: {
-                a: String,
-                b: String,
-                c: String,
-                d: String
-            },
+            choices: [],
 
             correct: Boolean,
     
