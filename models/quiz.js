@@ -29,13 +29,13 @@ const quizSchema = new mongoose.Schema({
             },
 
             answer: {
-                type: String,
-                require: true, default: "a"
+                type: Number,
+                require: true, default: 0
             },
 
             choice: {
-                type: String,
-                require: true, default: "b"
+                type: Number,
+                require: true, default: 0
             },
 
             choices: {
