@@ -46,7 +46,10 @@ router.post('/', async (req, res) => {
             message: `Created successfully`
         })
     } catch (err) {
-        res.send("Create route error", err)
+        res.json({
+            status: 500,
+            message: "something horrific happened when creating"
+        })
     }
 })
 
