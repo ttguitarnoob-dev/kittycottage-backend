@@ -39,9 +39,7 @@ router.post('/', async (req, res) => {
     // res.send("Hello from journal post route")
     try {
         console.log('hitting create route yayaya', req.body)
-        data = req.body
-        data.date = new Date().toLocaleDateString()
-        Journal.create(data)
+        Journal.create(req.body)
         res.json({
             status: 200,
             item: data,
