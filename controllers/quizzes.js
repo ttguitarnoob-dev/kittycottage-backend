@@ -20,14 +20,13 @@ router.get('/', async (req, res) => {
 
 //Show
 router.get('/:id', async (req, res) => {
-    res.send("hello from show route", req.body)
-    // try {
-    //     const oneCountdown = await Countdown.findById(req.params.id)
-    //     console.log('id?', req.params.id)
-    //     res.json(oneCountdown)
-    // } catch (err) {
-    //     console.log('something broke when fetching one', err)
-    // }
+    try {
+        const oneQuiz = await Quiz.findById(req.params.id)
+        console.log('id?', req.params.id)
+        res.json(oneQuiz)
+    } catch (err) {
+        console.log('something broke when fetching one', err)
+    }
 })
 
 
