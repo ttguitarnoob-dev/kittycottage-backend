@@ -69,7 +69,19 @@ router.delete('/:id', async (req, res) => {
 
 //Update
 router.put('/:id', async (req, res) => {
-    res.send('hello from update route')
+    try {
+        const updatedItem = await Quiz.findByIdAndUpdate(req.params.id, req.body, {new: true})
+        res.status(200).json({
+            message: "Item udated"
+        })
+    } catch (err) {
+        res.status(400).json({
+            message: "big bad problem with fetching item",
+            error: err
+        })
+    }
+    
+
 })
 
 
