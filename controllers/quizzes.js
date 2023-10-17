@@ -70,13 +70,15 @@ router.delete('/:id', async (req, res) => {
 //Update
 router.put('/:id', async (req, res) => {
     try {
+        console.log('pooooasss')
         const updatedItem = await Quiz.findByIdAndUpdate(req.params.id, req.body, {new: true})
+        console.log('updating thisone', updatedItem)
         res.status(200).json({
             message: "Item udated"
         })
     } catch (err) {
         res.status(400).json({
-            message: "big bad problem with fetching item",
+            message: "big bad problem with fetching store item",
             error: err
         })
     }
