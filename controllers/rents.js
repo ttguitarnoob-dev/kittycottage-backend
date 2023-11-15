@@ -1,5 +1,5 @@
 const express = require('express')
-const Invoice = require('../models/invoice')
+const Rent = require('../models/rent')
 const router = express.Router()
 
 
@@ -10,9 +10,9 @@ const router = express.Router()
 router.get('/', async (req, res) => {
     // res.send("Hello from journal index route")
     try {
-        const allInvoices = await Invoice.find()
-        console.log('hello from index route', allInvoices)
-        res.json(allInvoices)
+        const allRents = await Rent.find()
+        console.log('hello from index route', allRents)
+        res.json(allRents)
     } catch (err) {
         res.send("index route error", err)
     }
@@ -22,9 +22,9 @@ router.get('/', async (req, res) => {
 //Show
 router.get('/:id', async (req, res) => {
     try {
-        const oneInvoice = await Invoice.findById(req.params.id)
+        const oneRent = await Rent.findById(req.params.id)
         console.log('id?', req.params.id)
-        res.json(oneInvoice)
+        res.json(oneRent)
     } catch (err) {
         console.log('something broke when fetching one', err)
     }
@@ -37,7 +37,7 @@ router.post('/', async (req, res) => {
     // res.send("Hello from journal post route")
     try {
         console.log('hitting create route yayaya', req.body)
-        Invoice.create(req.body)
+        Rent.create(req.body)
         res.json({
             status: 200,
             item: req.body,
@@ -52,9 +52,9 @@ router.post('/', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     try {
         console.log('hello from delete route', req.params.id)
-        const oneInvoice = await Invoice.findByIdAndDelete(req.params.id)
-        console.log("you're useless", oneInvoice)
-        res.json(oneInvoice)
+        const oneRent = await Rent.findByIdAndDelete(req.params.id)
+        console.log("you're useless", oneRent)
+        res.json(oneRent)
        
         
     } catch (err) {
@@ -65,7 +65,7 @@ router.delete('/:id', async (req, res) => {
 //Update
 router.put('/:id', async (req, res) => {
     try {
-        const updatedItem = await Invoice.findByIdAndUpdate(req.params.id, req.body, {new: true})
+        const updatedItem = await Rent.findByIdAndUpdate(req.params.id, req.body, {new: true})
         res.json(updatedItem)
     } catch (err) {
         res.status(400).json({

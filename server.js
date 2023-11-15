@@ -13,6 +13,7 @@ countdownController = require('./controllers/countdowns')
 quizController = require('./controllers/quizzes')
 kizziJournalController = require('./controllers/kizzijournals')
 invoiceController = require('./controllers/invoices')
+rentController = require('./controllers/rents')
 
 
 
@@ -56,6 +57,7 @@ app.use('/countdowns', countdownController)
 app.use('/quizzes', quizController)
 app.use('/kizzi-journals', kizziJournalController)
 app.use('/invoices', invoiceController)
+app.use('/rents', rentController)
 app.use(express.urlencoded({ extended: false }))
 app.use(methodOverride('_method'))
 
