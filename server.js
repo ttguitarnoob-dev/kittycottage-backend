@@ -15,6 +15,7 @@ kizziJournalController = require('./controllers/kizzijournals')
 invoiceController = require('./controllers/invoices')
 rentController = require('./controllers/rents')
 majesticController = require('./controllers/majestics')
+priceController = require('./controllers/prices')
 
 
 
@@ -23,12 +24,6 @@ const mongoose = require('mongoose')
 const URI = require("./uri")
 mongoose.connect(URI)
 .then(console.log('mongo connected at', URI))
-// const Test = require('./models/test')
-// const Todo = require('./models/todo')
-// const Budget = require('./models/budget')
-// const Journal = require('./models/journal')
-// const Countdown = require('./models/countdown')
-// const Quiz = require('./models/quiz')
 
 
 //Configuration
@@ -60,7 +55,8 @@ app.use('/kizzi-journals', kizziJournalController)
 app.use('/invoices', invoiceController)
 app.use('/rents', rentController)
 app.use('/majestics', majesticController)
-app.use(express.urlencoded({ extended: false }))
+app.use('/prices', pricesController)
+app.use(express.urlencoded({ extended: false}))
 app.use(methodOverride('_method'))
 
 //Home Route
