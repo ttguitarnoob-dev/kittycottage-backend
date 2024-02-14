@@ -55,7 +55,7 @@ app.use('/kizzi-journals', kizziJournalController)
 app.use('/invoices', invoiceController)
 app.use('/rents', rentController)
 app.use('/majestics', majesticController)
-app.use('/prices', pricesController)
+app.use('/prices', priceController)
 app.use(express.urlencoded({ extended: false}))
 app.use(methodOverride('_method'))
 
