@@ -31,7 +31,19 @@ router.post('/', async (req, res) => {
 })
 
 
+//Update
+router.put('/:id', async (req, res) => {
+    try {
+        const updatedItem = await Budget.findByIdAndUpdate(req.params.id, req.body, {new: true})
+        res.json(updatedItem)
+    } catch (err) {
+        res.status(400).json({
+            message: "Something went horrendoulsy awry when fetching budget data"
+        })
+    }
+    
 
+})
 
 
 module.exports = router
