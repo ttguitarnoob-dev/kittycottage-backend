@@ -4,24 +4,50 @@ console.log("Budget model loaded")
 
 const budgetSchema = new mongoose.Schema({
 
-    billName: {
-        type: String,
-        require: true, default: "Tacos"
-    },
+    month: [
+        {
+            chosenMonth: {
+                type: String,
+                require: true, default: "June"
+            },
 
-    howMuch: {
-        type: String,
-        require: true, default: "34.11"
-    },
+            bills: [
+                {
+                    billName: {
+                        type: String,
+                        require: true, default: "Tacos"
+                    },
+                
+                    howMuch: {
+                        type: Number,
+                        require: true, default: 34.11
+                    },
+                
+                    dueDate: {
+                        type: Date,
+                        require: true, default: Date.now()
+                    },
+                    paidDate: {
+                        type: String,
+                        require: true, default: Date.now()
+                    }
+                }
+            ],
 
-    dueDate: {
-        type: String,
-        require: true, default: "Today"
-    },
-    paidDate: {
-        type: String,
-        require: true, default: "Tomorrow"
-    }
+            incomes: [
+                {
+                    source: {
+                        type: String,
+                        require: true, default: "Parts People"
+                    },
+                    amount: {
+                        type: Number,
+                        require: true, default: 500
+                    }
+                }
+            ]
+        }
+    ]
 }, { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } })
 
 const Budget = mongoose.model("budget", budgetSchema)
