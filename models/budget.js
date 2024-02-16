@@ -52,8 +52,7 @@ const budgetSchema = new mongoose.Schema({
 
 
 
-    timestamps: { createdAt: "created_at", updatedAt: "updated_at" }
-})
+}, {timestamps: { createdAt: "created_at", updatedAt: "updated_at" }})
 
 const Budget = mongoose.model("budget", budgetSchema)
 module.exports = Budget
