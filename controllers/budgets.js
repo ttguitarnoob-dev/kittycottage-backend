@@ -41,8 +41,6 @@ router.put('/:id', async (req, res) => {
             message: "Something went horrendoulsy awry when fetching budget data"
         })
     }
-    
-
 })
 
 

@@ -4,51 +4,56 @@ console.log("Budget model loaded")
 
 const budgetSchema = new mongoose.Schema({
 
-    month: [
+    month: {
+        type: String,
+        require: true, default: "January"
+    },
+
+    unpaid: {
+        type: Number,
+        require: true, default: 0
+    },
+
+    bills: [
         {
-            chosenMonth: {
+            billName: {
                 type: String,
-                require: true, default: "June"
+                require: true, default: "Tacos"
             },
 
-            bills: [
-                {
-                    billName: {
-                        type: String,
-                        require: true, default: "Tacos"
-                    },
-                
-                    howMuch: {
-                        type: Number,
-                        require: true, default: 34.11
-                    },
-                
-                    dueDate: {
-                        type: Date,
-                        require: true, default: Date.now()
-                    },
-                    paidDate: {
-                        type: String,
-                        require: true, default: Date.now()
-                    }
-                }
-            ],
+            howMuch: {
+                type: Number,
+                require: true, default: 34.11
+            },
 
-            incomes: [
-                {
-                    source: {
-                        type: String,
-                        require: true, default: "Parts People"
-                    },
-                    amount: {
-                        type: Number,
-                        require: true, default: 500
-                    }
-                }
-            ]
+            dueDate: {
+                type: Date,
+                require: true, default: Date.now()
+            },
+            paidDate: {
+                type: String,
+                require: true, default: Date.now()
+            }
         }
-    ]
-}, { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } })
+    ],
+
+    incomes: [
+        {
+            source: {
+                type: String,
+                require: true, default: "Parts People"
+            },
+            amount: {
+                type: Number,
+                require: true, default: 500
+            }
+        }
+    ],
+
+
+
+    timestamps: { createdAt: "created_at", updatedAt: "updated_at" }
+})
 
 const Budget = mongoose.model("budget", budgetSchema)
 module.exports = Budget
