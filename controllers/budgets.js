@@ -8,7 +8,6 @@ router.get('/', async (req, res) => {
         let parsedBudget = []
         const allBudgets = await Budget.find()
         allBudgets.map((oneBudget) =>{
-            console.log("OMG", oneBudget.month, oneBudget.unpaid, oneBudget._id)
             parsedBudget.push(
                 {
                     key: oneBudget._id,
@@ -17,8 +16,7 @@ router.get('/', async (req, res) => {
                 }
             )
         })
-        // console.log('hello from index route', allBudgets)
-        console.log("apaprps", parsedBudget)
+        console.log("hello from budget index route")
         res.json(parsedBudget)
     } catch(err) {
         res.send("index route error", err)
