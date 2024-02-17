@@ -18,8 +18,40 @@ router.get('/', async (req, res) => {
 //Create Route
 router.post('/', async (req, res) => {
     try {
-        console.log('hitting create route yayaya', req.body)
-        Budget.create(req.body)
+        console.log('hitting create route yayaya', req.body.month)
+        let data = {
+            month: req.body.month,
+            unpaid: 0,
+            bills: [
+                {
+                    billName: "Rent",
+                    howMuch: 1600,
+                    dueDate: `${req.body.month} 1`,
+                    paidDate: null,
+                    paid: false
+                },
+                {
+                    billName: "Car",
+                    howMuch: 422,
+                    dueDate: `${req.body.month} 4`,
+                    paidDate: null,
+                    paid: false
+                }
+            ]
+        }
+
+        function calculateUnpaid(){
+            let total = 0
+            data.bills.map((item) => {
+                total += item.howMuch
+            })
+            return total
+        }
+
+        data.unpaid = calculateUnpaid()
+
+        console.log("data created!", data)
+        Budget.create(data)
         res.json({
             status: 200,
             item: req.body,

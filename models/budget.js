@@ -30,9 +30,12 @@ const budgetSchema = new mongoose.Schema({
                 type: Date,
                 require: true, default: Date.now()
             },
-            paidDate: {
-                type: String,
-                require: true, default: Date.now()
+            
+            paidDate: Date,
+            
+            paid: {
+                type: Boolean,
+                require: true, default: false
             }
         }
     ],
