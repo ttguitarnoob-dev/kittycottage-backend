@@ -27,9 +27,41 @@ router.get('/', async (req, res) => {
 //Show
 router.get('/:id', async (req, res) => {
     try {
+        let expenses = []
+        let incomes = []
         const oneBudget = await Budget.findById(req.params.id)
-        console.log('id?', req.params.id)
+
+        //Parsing expenses data so that frontend can put it in the stupid magic table
+        oneBudget.bills.map((oneBill, index) => {
+            let isPaid = "No"
+            if (oneBill.paid){
+                isPaid = "Yes"
+            }
+            expenses.push(
+                {
+                    key: oneBill._id,
+                    billName: oneBill.billName,
+                    amount: oneBill.howMuch,
+                    dueDate: oneBill.dueDate.toLocaleDateString(),
+                    paid: isPaid
+                }
+            )
+        })
+
+        //Parsing the incomes data in the same way for the stupid magic table
+        oneBudget.incomes.map((oneIncome) => {
+            incomes.push(
+                {
+                    key: oneIncome._id,
+                    source: oneIncome.source,
+                    amount: oneIncome.amount
+                }
+            )
+        })
+
+        console.log('hello from budget show route', [expenses, incomes])
         res.json(oneBudget)
+        // res.json({expenses: expenses, incomes: incomes, month: oneBudget.month, year: oneBudget.bills[0].dueDate.getFullYear()})
     } catch (err) {
         console.log('something broke when fetching one', err)
     }
@@ -40,6 +72,9 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
     try {
         console.log('hitting create route yayaya', req.body.month)
+        const currentYear = new Date().getFullYear()
+        const selectedMonth = req.body.month
+        
         let data = {
             month: req.body.month,
             unpaid: 0,
@@ -47,14 +82,14 @@ router.post('/', async (req, res) => {
                 {
                     billName: "Rent",
                     howMuch: 1600,
-                    dueDate: `${req.body.month} 1`,
+                    dueDate: new Date(`${selectedMonth} 1, ${currentYear}`),
                     paidDate: null,
                     paid: false
                 },
                 {
                     billName: "Car",
                     howMuch: 422,
-                    dueDate: `${req.body.month} 4`,
+                    dueDate: new Date(`${selectedMonth} 4, ${currentYear}`),
                     paidDate: null,
                     paid: false
                 }
