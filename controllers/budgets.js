@@ -76,7 +76,7 @@ router.post('/', async (req, res) => {
         const selectedMonth = req.body.month
         
         let data = {
-            month: req.body.month,
+            month: `${req.body.month} ${currentYear}`,
             unpaid: 0,
             bills: [
                 {
