@@ -33,15 +33,15 @@ router.get('/:id', async (req, res) => {
 
         //Parsing expenses data so that frontend can put it in the stupid magic table
         oneBudget.bills.map((oneBill, index) => {
-            let isPaid = "No"
+            let isPaid = "Not Paid"
             if (oneBill.paid){
-                isPaid = "Yes"
+                isPaid = "Paid"
             }
             expenses.push(
                 {
-                    key: oneBill._id,
+                    _id: oneBill._id,
                     billName: oneBill.billName,
-                    amount: oneBill.howMuch,
+                    howMuch: oneBill.howMuch,
                     dueDate: oneBill.dueDate.toLocaleDateString(),
                     paid: isPaid
                 }
@@ -59,8 +59,8 @@ router.get('/:id', async (req, res) => {
             )
         })
 
-        console.log('hello from budget show route', [expenses, incomes])
-        res.json(oneBudget)
+        console.log('hello from budget show route', oneBudget)
+        res.json({month: oneBudget.month, expenses: expenses})
         // res.json({expenses: expenses, incomes: incomes, month: oneBudget.month, year: oneBudget.bills[0].dueDate.getFullYear()})
     } catch (err) {
         console.log('something broke when fetching one', err)
