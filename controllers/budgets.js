@@ -120,6 +120,16 @@ router.post('/', async (req, res) => {
     }
 })
 
+//Add income
+router.put('/new-income/:id', async (req, res) => {
+    try{
+        console.log('hello from add income route. this is my body:', req.body)
+        res.json({message: "hello from add income route"})
+    } catch(err) {
+        console.log('omg how do I fix this from the add income route', err)
+    }
+})
+
 
 //Update
 router.put('/:id', async (req, res) => {
