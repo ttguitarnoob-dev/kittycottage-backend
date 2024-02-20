@@ -123,6 +123,7 @@ router.post('/', async (req, res) => {
 //Add income
 router.put('/new-income/:id', async (req, res) => {
     try{
+        const item = Budget.findById(req.body.id)
         console.log('hello from add income route. this is my body:', req.body)
         res.json({message: "hello from add income route"})
     } catch(err) {

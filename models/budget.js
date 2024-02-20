@@ -14,6 +14,13 @@ const budgetSchema = new mongoose.Schema({
         require: true, default: 0
     },
 
+    tithe: {
+        type: Number,
+        require: true, default: 0
+    },
+
+
+
     bills: [
         {
             billName: {
