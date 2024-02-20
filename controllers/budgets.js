@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
     try {
         let parsedBudget = []
         const allBudgets = await Budget.find()
-        allBudgets.map((oneBudget) =>{
+        allBudgets.map((oneBudget) => {
             parsedBudget.push(
                 {
                     key: oneBudget._id,
@@ -18,10 +18,10 @@ router.get('/', async (req, res) => {
         })
         console.log("hello from budget index route")
         res.json(parsedBudget)
-    } catch(err) {
+    } catch (err) {
         res.send("index route error", err)
     }
-    
+
 })
 
 //Show
@@ -34,7 +34,7 @@ router.get('/:id', async (req, res) => {
         //Parsing expenses data so that frontend can put it in the stupid magic table
         oneBudget.bills.map((oneBill, index) => {
             let isPaid = "Not Paid"
-            if (oneBill.paid){
+            if (oneBill.paid) {
                 isPaid = "Paid"
             }
             expenses.push(
@@ -60,9 +60,9 @@ router.get('/:id', async (req, res) => {
         })
 
         console.log('hello from budget show route', oneBudget)
-        
+
         // res.json({allData: oneBudget, expenses: expenses, incomes: incomes})
-        res.json({month: oneBudget.month, expenses: expenses})
+        res.json({ month: oneBudget.month, expenses: expenses })
 
     } catch (err) {
         console.log('something broke when fetching one', err)
@@ -76,7 +76,7 @@ router.post('/', async (req, res) => {
         console.log('hitting create route yayaya', req.body.month)
         const currentYear = new Date().getFullYear()
         const selectedMonth = req.body.month
-        
+
         let data = {
             month: `${req.body.month} ${currentYear}`,
             unpaid: 0,
@@ -98,7 +98,7 @@ router.post('/', async (req, res) => {
             ]
         }
 
-        function calculateUnpaid(){
+        function calculateUnpaid() {
             let total = 0
             data.bills.map((item) => {
                 total += item.howMuch
@@ -114,20 +114,20 @@ router.post('/', async (req, res) => {
             status: 200,
             item: req.body,
             message: `Created successfully`
-        }) 
-    } catch(err){
+        })
+    } catch (err) {
         res.send("Create route error", err)
     }
 })
 
 //Add income
 router.put('/new-income/:id', async (req, res) => {
-    try{
-        const item = Budget.findById(req.body.id)
+    try {
+        const item = await Budget.findById(req.body.id)
         console.log('the itemmm', item)
         console.log('hello from add income route. this is my body:', req.body)
-        res.json({message: "hello from add income route"})
-    } catch(err) {
+        res.json({ message: "hello from add income route" })
+    } catch (err) {
         console.log('omg how do I fix this from the add income route', err)
     }
 })
@@ -136,7 +136,7 @@ router.put('/new-income/:id', async (req, res) => {
 //Update
 router.put('/:id', async (req, res) => {
     try {
-        const updatedItem = await Budget.findByIdAndUpdate(req.params.id, req.body, {new: true})
+        const updatedItem = await Budget.findByIdAndUpdate(req.params.id, req.body, { new: true })
         res.json(updatedItem)
     } catch (err) {
         res.status(400).json({
