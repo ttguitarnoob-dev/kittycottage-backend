@@ -60,8 +60,10 @@ router.get('/:id', async (req, res) => {
         })
 
         console.log('hello from budget show route', oneBudget)
+        
+        // res.json({allData: oneBudget, expenses: expenses, incomes: incomes})
         res.json({month: oneBudget.month, expenses: expenses})
-        // res.json({expenses: expenses, incomes: incomes, month: oneBudget.month, year: oneBudget.bills[0].dueDate.getFullYear()})
+
     } catch (err) {
         console.log('something broke when fetching one', err)
     }
