@@ -52,7 +52,7 @@ router.get('/:id', async (req, res) => {
         oneBudget.incomes.map((oneIncome) => {
             incomes.push(
                 {
-                    key: oneIncome._id,
+                    _id: oneIncome._id,
                     source: oneIncome.source,
                     amount: oneIncome.amount
                 }
@@ -61,8 +61,9 @@ router.get('/:id', async (req, res) => {
 
         console.log('hello from budget show route', oneBudget)
 
-        // res.json({allData: oneBudget, expenses: expenses, incomes: incomes})
-        res.json({ month: oneBudget.month, expenses: expenses })
+        res.json({ allData: oneBudget, expenses: expenses, incomes: incomes })
+        //res.json({month: oneBudget.month, expenses: expenses})
+
 
     } catch (err) {
         console.log('something broke when fetching one', err)
