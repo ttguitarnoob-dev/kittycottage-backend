@@ -128,7 +128,11 @@ router.put('/new-income/:id', async (req, res) => {
         console.log('hello from add income route. this is my body:', req.body)
 
         //determine tithe
-        const tithe = (0.1 * req.body.amount) + item.tithe
+        const totalIncome = 0
+        item.incomes.map((oneItem) => {
+            totalIncome += oneItem
+        })
+        const tithe = 0.1 * (req.body.amount + totalIncome)
         const updatedItem = await Budget.findByIdAndUpdate(req.params.id, {tithe: tithe, incomes: [req.body]})
 
 
