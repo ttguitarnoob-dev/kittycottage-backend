@@ -124,14 +124,14 @@ router.post('/', async (req, res) => {
 //Add income
 router.put('/new-income/:id', async (req, res) => {
     try {
-        const item = await Budget.findById(req.body.id)
+        const item = await Budget.findById(req.params.id)
         console.log('hello from add income route. this is my body:', req.body)
 
         //determine tithe
-        const tithe = (0.1 * req.body.amount)
+        const tithe = (0.1 * req.body.amount) + item.tithe
         console.log("tithe should be 160", tithe)
         console.log('this is the id', req.params.id)
-        // const updatedItem = await Budget.findByIdAndUpdate(req.body.id, {tithe: tithe, incomes: [req.body]})
+        const updatedItem = await Budget.findByIdAndUpdate(req.params.id, {tithe: tithe, incomes: [req.body]})
 
 
         res.json({ message: "hello from add income route" })
