@@ -129,12 +129,10 @@ router.put('/new-income/:id', async (req, res) => {
 
         //determine tithe
         const tithe = (0.1 * req.body.amount) + item.tithe
-        console.log("tithe should be 160", tithe)
-        console.log('this is the id', req.params.id)
         const updatedItem = await Budget.findByIdAndUpdate(req.params.id, {tithe: tithe, incomes: [req.body]})
 
 
-        res.json({ message: "hello from add income route" })
+        res.json({ updatedItem})
     } catch (err) {
         console.log('omg how do I fix this from the add income route', err)
     }
