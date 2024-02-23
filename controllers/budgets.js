@@ -29,6 +29,7 @@ router.get('/:id', async (req, res) => {
     try {
         let expenses = []
         let incomes = []
+        let totalIncome = 0
         const oneBudget = await Budget.findById(req.params.id)
 
         //Parsing expenses data so that frontend can put it in the stupid magic table
@@ -50,6 +51,7 @@ router.get('/:id', async (req, res) => {
 
         //Parsing the incomes data in the same way for the stupid magic table
         oneBudget.incomes.map((oneIncome) => {
+            totalIncome += oneIncome.amount
             incomes.push(
                 {
                     _id: oneIncome._id,
@@ -61,7 +63,7 @@ router.get('/:id', async (req, res) => {
 
         console.log('hello from budget show route', oneBudget)
 
-        res.json({ allData: oneBudget, expenses: expenses, incomes: incomes })
+        res.json({ allData: oneBudget, expenses: expenses, incomes: incomes, totalIncome: totalIncome })
         //res.json({month: oneBudget.month, expenses: expenses})
 
 
