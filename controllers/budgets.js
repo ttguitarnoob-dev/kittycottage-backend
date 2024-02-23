@@ -127,7 +127,7 @@ router.post('/', async (req, res) => {
             data.bills.map((item) => {
                 total += item.howMuch
             })
-            return total
+            return parseFloat(total).toFixed(2)
         }
 
         data.unpaid = calculateUnpaid()
