@@ -97,7 +97,28 @@ router.post('/', async (req, res) => {
                     dueDate: new Date(`${selectedMonth} 4, ${currentYear}`),
                     paidDate: null,
                     paid: false
-                }
+                },
+                {
+                    billName: "Internet",
+                    howMuch: 84.99,
+                    dueDate: new Date(`${selectedMonth} 11, ${currentYear}`),
+                    paidDate: null,
+                    paid: false
+                },
+                {
+                    billName: "Trash",
+                    howMuch: 36.50,
+                    dueDate: new Date(`${selectedMonth} 2, ${currentYear}`),
+                    paidDate: null,
+                    paid: false
+                },
+                {
+                    billName: "Insurance",
+                    howMuch: 22.91,
+                    dueDate: new Date(`${selectedMonth} 11, ${currentYear}`),
+                    paidDate: null,
+                    paid: false
+                },
             ]
         }
 
