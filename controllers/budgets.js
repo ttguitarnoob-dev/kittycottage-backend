@@ -128,7 +128,7 @@ router.put('/new-income/:id', async (req, res) => {
         console.log('hello from add income route. this is my body:', req.body)
 
         //determine tithe
-        const tithe = 0.1 * req.body.amount
+        const tithe = (0.1 * req.body.amount)
         console.log("tithe should be 160", tithe)
 
 
