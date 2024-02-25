@@ -83,6 +83,8 @@ router.post('/', async (req, res) => {
         let data = {
             month: `${req.body.month} ${currentYear}`,
             unpaid: 0,
+            incomes: [],
+            tithe: 0,
             bills: [
                 {
                     billName: "Rent",
@@ -127,7 +129,7 @@ router.post('/', async (req, res) => {
             data.bills.map((item) => {
                 total += item.howMuch
             })
-            return parseFloat(total).toFixed(2)
+            return parseFloat(total).toFixed(3)
         }
 
         data.unpaid = calculateUnpaid()
@@ -151,17 +153,33 @@ router.put('/new-income/:id', async (req, res) => {
         console.log('hello from add income route. this is my body:', req.body)
 
         //determine tithe
-        const totalIncome = 0
+       
+        let totalIncome = 0
         item.incomes.map((oneItem) => {
             totalIncome += oneItem.amount
         })
         const tithe = 0.1 * (req.body.amount + totalIncome)
-        const updatedItem = await Budget.findByIdAndUpdate(req.params.id, {tithe: tithe, incomes: [req.body]})
+        item.tithe = tithe
+        item.incomes.push(req.body)
+        const updatedItem = await Budget.findByIdAndUpdate(req.params.id, item, {new: true})
+        
 
 
         res.json({ updatedItem})
     } catch (err) {
         console.log('omg how do I fix this from the add income route', err)
+    }
+})
+
+//New Expense
+router.put('/new-expense/:id', async (req, res) => {
+    try{
+        const item = await Budget.findById(req.params.id)
+        item.bills.push(req.body)
+        const updatedItem = await Budget.findByIdAndUpdate(req.params.id, item, {new: true})
+        res.json(updatedItem)
+    } catch(err) {
+        console.log('update budget route encountered a fatal decapitationlike error', err)
     }
 })
 
