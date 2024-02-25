@@ -148,10 +148,10 @@ router.post('/', async (req, res) => {
 
 //Add income
 router.put('/new-income/:id', async (req, res) => {
+    console.log("hello from the new income route this is my body", req.body)
     try {
         const item = await Budget.findById(req.params.id)
-        console.log('hello from add income route. this is my body:', req.body)
-
+        
         //determine tithe
        
         let totalIncome = 0
@@ -165,7 +165,7 @@ router.put('/new-income/:id', async (req, res) => {
         
 
 
-        res.json({ updatedItem})
+        res.json(updatedItem)
     } catch (err) {
         console.log('omg how do I fix this from the add income route', err)
     }
