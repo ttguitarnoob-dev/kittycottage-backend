@@ -151,7 +151,7 @@ router.put('/new-income/:id', async (req, res) => {
     console.log("hello from the new income route this is my body", req.body)
     try {
         const item = await Budget.findById(req.params.id)
-        
+
         //determine tithe
        
         let totalIncome = 0
@@ -174,6 +174,7 @@ router.put('/new-income/:id', async (req, res) => {
 //New Expense
 router.put('/new-expense/:id', async (req, res) => {
     try{
+        console.log('expense route', req.body)
         const item = await Budget.findById(req.params.id)
         item.bills.push(req.body)
         const updatedItem = await Budget.findByIdAndUpdate(req.params.id, item, {new: true})
