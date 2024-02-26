@@ -173,9 +173,29 @@ router.put('/new-income/:id', async (req, res) => {
 
 //New Expense
 router.put('/new-expense/:id', async (req, res) => {
+
+    function calculateUnpaid(data) {
+        let total = 0
+        data.bills.map((item) => {
+            total += item.howMuch
+        })
+        return parseFloat(total).toFixed(3)
+    }
+
+    try {
+        const item = await Budget.findById(req.params.id)
+    } catch(err) {
+        console.log('Some error happened when grabbing the data from the add expense route')
+    }
+
+    const nonPaid = calculateUnpaid(item)
+    item.unpaid = nonPaid
+    console.log("calculated unpaid i think", item)
+
+
     try{
         console.log('expense route', req.body)
-        const item = await Budget.findById(req.params.id)
+        
         item.bills.push(req.body)
         const updatedItem = await Budget.findByIdAndUpdate(req.params.id, item, {new: true})
         res.json(updatedItem)
