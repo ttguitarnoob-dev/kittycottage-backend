@@ -175,9 +175,12 @@ router.put('/new-income/:id', async (req, res) => {
 router.put('/new-expense/:id', async (req, res) => {
 
     function calculateUnpaid(data) {
-        let total = 0
+        let total = data.unpaid
         data.bills.map((item) => {
-            total += item.howMuch
+            if (!item.paid) {
+                total += item.howMuch
+            }
+
         })
         return parseFloat(total).toFixed(3)
     }
