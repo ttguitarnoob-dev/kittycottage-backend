@@ -217,7 +217,7 @@ router.put('/:id', async (req, res) => {
 //Testroute
 router.put('/poosmell/:id', async (req, res) => {
     console.log('id', req.params.id)
-    res.send('wow this id smells bad', req.params.id)
+    res.send(`wow this id smells bad ${req.params.id}`)
 })
 
 module.exports = router
