@@ -217,7 +217,9 @@ router.put('/:id', async (req, res) => {
 //Testroute
 router.put('/poosmell/:id', async (req, res) => {
     console.log('id', req.params.id)
-    res.send(`wow this id smells bad ${req.params.id}`)
+    const thing = Budget.findById(req.params.id)
+    console.log('well this is the thing officially', thing)
+    res.send(`wow this id smells bad ${thing}`)
 })
 
 module.exports = router
