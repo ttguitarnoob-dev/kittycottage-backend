@@ -206,6 +206,7 @@ router.put('/new-expense/:id', async (req, res) => {
 router.put('/:id', async (req, res) => {
     try {
         const updatedItem = await Budget.findByIdAndUpdate(req.params.id, req.body, { new: true })
+        console.log("hello ffrom generic update route", req.body)
         res.json(updatedItem)
     } catch (err) {
         res.status(400).json({
