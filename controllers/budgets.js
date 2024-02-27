@@ -40,7 +40,7 @@ router.get('/:id', async (req, res) => {
             }
             expenses.push(
                 {
-                    _id: oneBill._id,
+                    _id: index,
                     billName: oneBill.billName,
                     howMuch: oneBill.howMuch,
                     dueDate: oneBill.dueDate.toLocaleDateString(),
