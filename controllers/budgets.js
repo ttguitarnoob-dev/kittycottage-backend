@@ -2,6 +2,8 @@ const express = require('express')
 const Budget = require('../models/budget')
 const router = express.Router()
 
+
+
 //Index
 router.get('/', async (req, res) => {
     try {
@@ -159,7 +161,7 @@ router.put('/new-income/:id', async (req, res) => {
             totalIncome += oneItem.amount
         })
         const tithe = 0.1 * (req.body.amount + totalIncome)
-        item.tithe = tithe
+        item.tithe = parseInt(tithe)
         item.incomes.push(req.body)
         const updatedItem = await Budget.findByIdAndUpdate(req.params.id, item, { new: true })
 
@@ -188,26 +190,47 @@ router.put('/new-expense/:id', async (req, res) => {
     try {
         console.log('expense route', req.body)
         const item = await Budget.findById(req.params.id)
+        item.bills.push(req.body)
 
         const nonPaid = calculateUnpaid(item)
         item.unpaid = nonPaid
         console.log("calculated unpaid i think", item)
 
-        item.bills.push(req.body)
-        const updatedItem = await Budget.findByIdAndUpdate(req.params.id, item, { new: true })
-        res.json(updatedItem)
+
+        // const updatedItem = await Budget.findByIdAndUpdate(req.params.id, item, { new: true })
+        res.json(item)
     } catch (err) {
         console.log('update budget route encountered a fatal decapitationlike error', err)
     }
 })
 
 
-//Update
-router.put('/:id', async (req, res) => {
+//Update Unpaid
+router.put('/update-unpaid/:id', async (req, res) => {
     try {
+        const allData = req.body
+        function calculateUnpaid(data) {
+            console.log('thedata', data)
+            // let total = req.body.howMuch
+            let total = 0
+            data.bills.map((item) => {
+                if (!item.paid) {
+                    total += item.howMuch
+                }
+
+            })
+            return parseInt(total)
+        }
+
+        const nonPaid = calculateUnpaid(allData)
+        allData.unpaid = nonPaid
         const updatedItem = await Budget.findByIdAndUpdate(req.params.id, req.body, { new: true })
-        console.log("hello ffrom generic update route", req.body)
-        res.json(updatedItem)
+        console.log("hello ffrom update unpaid route")
+        res.json({
+            status: 200,
+            item: updatedItem,
+            message: `Updated Unpaid Successfully`
+        })
     } catch (err) {
         res.status(400).json({
             message: "Something went horrendoulsy awry when fetching budget data"

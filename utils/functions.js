@@ -1,10 +1,12 @@
-//Loop through all bills and return a float
-function calculateUnpaid() {
-    let total = 0
+//Loop through all bills, add together any that are marked as paid - false and return a float
+export function calculateUnpaid(data) {
+    let total = req.body.howMuch
     data.bills.map((item) => {
-        total += item.howMuch
+        if (!item.paid) {
+            total += item.howMuch
+        }
+
     })
     return parseFloat(total).toFixed(3)
 }
 
-export { calculateUnpaid }
