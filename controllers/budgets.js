@@ -196,7 +196,7 @@ router.put('/new-expense/:id', async (req, res) => {
         item.unpaid = nonPaid
 
 
-        // const updatedItem = await Budget.findByIdAndUpdate(req.params.id, item, { new: true })
+        const updatedItem = await Budget.findByIdAndUpdate(req.params.id, item, { new: true })
         res.json(item)
     } catch (err) {
         console.log('update budget route encountered a fatal decapitationlike error', err)
