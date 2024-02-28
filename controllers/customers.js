@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
 
     
     try {
-        console.log('hitting create route yayaya', req.body)
+        console.log('hitting create route for customers yayaya', req.body)
         Customer.create(req.body)
         res.json({
             status: 200,
