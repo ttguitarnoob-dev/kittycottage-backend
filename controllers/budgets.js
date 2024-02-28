@@ -188,13 +188,12 @@ router.put('/new-expense/:id', async (req, res) => {
     }
 
     try {
-        console.log('expense route', req.body)
+        console.log('add expense route')
         const item = await Budget.findById(req.params.id)
         item.bills.push(req.body)
 
         const nonPaid = calculateUnpaid(item)
         item.unpaid = nonPaid
-        console.log("calculated unpaid i think", item)
 
 
         // const updatedItem = await Budget.findByIdAndUpdate(req.params.id, item, { new: true })
