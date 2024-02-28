@@ -16,6 +16,7 @@ invoiceController = require('./controllers/invoices')
 rentController = require('./controllers/rents')
 majesticController = require('./controllers/majestics')
 priceController = require('./controllers/prices')
+customerController = require('./controllers/customers')
 
 
 
@@ -56,6 +57,7 @@ app.use('/invoices', invoiceController)
 app.use('/rents', rentController)
 app.use('/majestics', majesticController)
 app.use('/prices', priceController)
+app.use('/customers', customerController)
 app.use(express.urlencoded({ extended: false}))
 app.use(methodOverride('_method'))
 
