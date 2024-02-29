@@ -2,8 +2,7 @@ const mongoose = require('mongoose')
 
 const priceSchema = new mongoose.Schema({
 
-    smallHeadstone: [
-        {
+    smallHeadstone: {
             name: {
                 type: String,
                 require: true, default: "Small Headstone"
@@ -12,10 +11,9 @@ const priceSchema = new mongoose.Schema({
                 type: Number,
                 require: true, default: 50
             }
-        }
-    ],
+        },
 
-    bigHeadstone: [
+    bigHeadstone: 
         {
             name: {
                 type: String,
@@ -25,12 +23,10 @@ const priceSchema = new mongoose.Schema({
                 type: Number,
                 require: true, default: 150
             }
-        }
-    ],
+        },
 
 
-    bronze: [
-        {
+    bronze: {
             name: {
                 type: String,
                 require: true, default: "Bronze Plaque"
@@ -39,11 +35,9 @@ const priceSchema = new mongoose.Schema({
                 type: Number,
                 require: true, default: 50
             }
-        }
-    ],
+        },
 
-    bench: [
-        {
+    bench: {
             name: {
                 type: String,
                 require: true, default: "Bench"
@@ -52,11 +46,9 @@ const priceSchema = new mongoose.Schema({
                 type: Number,
                 require: true, default: 50
             }
-        }
-    ],
+        },
 
-    relettering: [
-        {
+    relettering: {
             name: {
                 type: String,
                 require: true, default: "Relettering"
@@ -65,11 +57,9 @@ const priceSchema = new mongoose.Schema({
                 type: Number,
                 require: true, default: 50
             }
-        }
-    ],
+        },
 
-    normalPicture: [
-        {
+    normalPicture: {
             name: {
                 type: String,
                 require: true, default: "Normal Picture"
@@ -78,11 +68,9 @@ const priceSchema = new mongoose.Schema({
                 type: Number,
                 require: true, default: 100
             }
-        }
-    ],
+        },
 
-    fancyPicture: [
-        {
+    fancyPicture: {
             name: {
                 type: String,
                 require: true, default: "Fancy Picture"
@@ -91,11 +79,9 @@ const priceSchema = new mongoose.Schema({
                 type: Number,
                 require: true, default: 300
             }
-        }
-    ],
+        },
 
-    flowers: [
-        {
+    flowers: {
             name: {
                 type: String,
                 require: true, default: "Flowers"
@@ -104,8 +90,7 @@ const priceSchema = new mongoose.Schema({
                 type: Number,
                 require: true, default: 25
             }
-        }
-    ],
+        },
 
 
 }, { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } })
