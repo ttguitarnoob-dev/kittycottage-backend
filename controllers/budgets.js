@@ -238,11 +238,9 @@ router.put('/update-unpaid/:id', async (req, res) => {
 })
 
 //Testroute
-router.put('/poosmell/:id', async (req, res) => {
-    console.log('id', req.params.id)
-    const thing = Budget.findById(req.params.id)
-    console.log('well this is the thing officially', thing)
-    res.send(`wow this id smells bad ${thing}`)
+router.put('/general-update/:id', async (req, res) => {
+    const updatedItem = await Budget.findByIdAndUpdate(req.params.id, req.body, { new :true})
+    res.json(updatedItem)
 })
 
 module.exports = router
