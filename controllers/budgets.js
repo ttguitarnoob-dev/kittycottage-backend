@@ -258,11 +258,11 @@ router.put('/edit-expense/:id', async (req, res) => {
         const nonPaid = calculateUnpaid(allData)
         allData.unpaid = nonPaid
         console.log('this is the data now', allData)
-        // const updatedItem = await Budget.findByIdAndUpdate(req.params.id, allData, { new :true})
+        const updatedItem = await Budget.findByIdAndUpdate(req.params.id, allData, { new :true})
+        res.json(updatedItem)
     } catch(err) {
         console.log('you really should think twice before editing expenses', err)
     }
-    res.json(updatedItem)
 })
 
 module.exports = router
