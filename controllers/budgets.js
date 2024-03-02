@@ -237,9 +237,31 @@ router.put('/update-unpaid/:id', async (req, res) => {
     }
 })
 
-//Testroute
-router.put('/general-update/:id', async (req, res) => {
-    const updatedItem = await Budget.findByIdAndUpdate(req.params.id, req.body, { new :true})
+//Edit Expense
+router.put('/edit-expense/:id', async (req, res) => {
+    try {
+        const allData = req.body
+        console.log('this is the data before', allData)
+        function calculateUnpaid(data) {
+            console.log('thedata', data)
+            // let total = req.body.howMuch
+            let total = 0
+            data.bills.map((item) => {
+                if (!item.paid) {
+                    total += item.howMuch
+                }
+
+            })
+            return parseInt(total)
+        }
+
+        const nonPaid = calculateUnpaid(allData)
+        allData.unpaid = nonPaid
+        console.log('this is the data now', allData)
+        // const updatedItem = await Budget.findByIdAndUpdate(req.params.id, allData, { new :true})
+    } catch(err) {
+        console.log('you really should think twice before editing expenses', err)
+    }
     res.json(updatedItem)
 })
 
