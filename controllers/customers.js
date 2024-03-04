@@ -62,5 +62,32 @@ router.delete('/:id', async (req, res) => {
     }
 })
 
+const dataaa = {
+    _id: '65dfcc46040aa356279db4ec',
+    name: 'Jimbob Thornton',
+    email: 'jimbob@coolman.net',
+    phone: '495-394-3943',
+    customerNotes: 'I am cool man',
+    jobs: [
+      {
+        services: [Array],
+        totalPrice: 50,
+        location: 'dfdf',
+        date: '2024-03-19',
+        jobNotes: 'sdsd'
+      }
+    ],
+    created_at: '2024-02-29T00:13:58.551Z',
+    updated_at: '2024-02-29T00:13:58.551Z',
+    __v: 0
+  }
+
+//Update
+router.put('/:id', async (req, res) => {
+    console.log("This is the customer put route", req.params.id)
+    const updatedItem = await Customer.findByIdAndUpdate(req.params.id, req.body, { new :true})
+    res.json(updatedItem)
+})
+
 
 module.exports = router
