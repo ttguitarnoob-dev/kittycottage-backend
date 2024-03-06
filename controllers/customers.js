@@ -22,9 +22,23 @@ router.get('/', async (req, res) => {
 //Show
 router.get('/:id', async (req, res) => {
     try {
+        const jobs = []
         const oneCustomer = await Customer.findById(req.params.id)
-        console.log('id?', req.params.id)
-        res.json(oneCustomer)
+        oneCustomer.jobs.map((oneJob, index) => {
+            
+            jobs.push(
+                {
+                    key: index,
+                    location: oneJob.location,
+                    date: oneJob.date,
+                    services: oneJob.services,
+                    totalPrice: oneJob.totalPrice,
+                    jobNotes: oneJob.jobNotes
+                }
+            )
+        })
+        // console.log("hopefully has key", jobs)
+        res.json({oneCustomer: oneCustomer, jobs: jobs})
     } catch (err) {
         console.log('something broke when fetching one', err)
     }
@@ -62,25 +76,7 @@ router.delete('/:id', async (req, res) => {
     }
 })
 
-const dataaa = {
-    _id: '65dfcc46040aa356279db4ec',
-    name: 'Jimbob Thornton',
-    email: 'jimbob@coolman.net',
-    phone: '495-394-3943',
-    customerNotes: 'I am cool man',
-    jobs: [
-      {
-        services: [Array],
-        totalPrice: 50,
-        location: 'dfdf',
-        date: '2024-03-19',
-        jobNotes: 'sdsd'
-      }
-    ],
-    created_at: '2024-02-29T00:13:58.551Z',
-    updated_at: '2024-02-29T00:13:58.551Z',
-    __v: 0
-  }
+
 
 //Update
 router.put('/:id', async (req, res) => {
