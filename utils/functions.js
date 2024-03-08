@@ -1,5 +1,5 @@
 //Loop through all bills, add together any that are marked as paid - false and return a float
-export function calculateUnpaid(data) {
+export function poocalculateUnpaid(data) {
     let total = req.body.howMuch
     data.bills.map((item) => {
         if (!item.paid) {
@@ -9,4 +9,3 @@ export function calculateUnpaid(data) {
     })
     return parseFloat(total).toFixed(3)
 }
-
