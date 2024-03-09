@@ -31,6 +31,11 @@ const customerSchema = new mongoose.Schema({
                 require: true, default: "Default Cemetary"
             },
 
+            invoiceID: {
+                type: String,
+                require: true, default: null
+            },
+
             date: {
                 type: Date,
             },

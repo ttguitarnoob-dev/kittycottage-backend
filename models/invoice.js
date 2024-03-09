@@ -8,24 +8,35 @@ const invoiceSchema = new mongoose.Schema({
         type: String,
         require: true, default: "Default Client"
     },
+    
+    phone: String,
+    email: String,
+    clientId: String,
+    jobIndex: Number,
 
     job: {
         type: String,
         require: true, default: "Default Job"
     },
 
-    tasks: {
+    date: Date,
+
+    jobDetails: {
         type: String,
         require: true, default: "Tasks were completed."
     },
-    rate: {
-        type: Number,
-        require: true, default: 60
-    },
-    hours: {
-        type: Number,
-        require: true, default: 1
-    },
+    services: [
+        {
+            serviceName: {
+                type: String,
+            },
+
+            price: {
+                type: Number
+            }
+        }
+    ],
+    
     paid: {
         type: Boolean,
         require: true, default: false

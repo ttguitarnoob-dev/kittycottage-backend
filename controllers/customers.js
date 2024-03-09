@@ -85,5 +85,16 @@ router.put('/:id', async (req, res) => {
     res.json(updatedItem)
 })
 
+//Add invoice ID
+router.put('/invoice-id/:id', async (req, res) => {
+    const clientData = await Customer.findById(req.params.id)
+    clientData.jobs[req.body.jobIndex]['invoiceID'] = req.body.invoiceID
+    console.log('customerdata', clientData)
+    const updateCustomer = await Customer.findByIdAndUpdate(req.params.id, clientData, { new :true})
+    // const sendybackdata = {stinkass: "you did it man", thedata: req.body}
+    // console.log('here is my body', req.body)
+    res.json(updateCustomer)
+})
+
 
 module.exports = router

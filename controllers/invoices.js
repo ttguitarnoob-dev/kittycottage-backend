@@ -37,12 +37,13 @@ router.post('/', async (req, res) => {
     // res.send("Hello from journal post route")
     try {
         console.log('hitting create route yayaya', req.body)
-        Invoice.create(req.body)
+        const createdInvoice = await Invoice.create(req.body)
         res.json({
             status: 200,
-            item: req.body,
+            invoiceId: createdInvoice._id,
             message: `Created successfully`
         })
+    
     } catch (err) {
         res.status(err).send("bad things")
     }
