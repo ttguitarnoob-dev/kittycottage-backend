@@ -102,7 +102,7 @@ router.put('/invoice-id/:id', async (req, res) => {
 router.put('/update-paid/:id', async (req, res) => {
     let customerData = await Customer.findById(req.params.id)
     let invoiceData = await Invoice.findById(customerData.jobs[req.body.jobIndex].invoiceID)
-    console.log('customerdata', customerData.jobs[req.body.jobIndex].invoiceID)
+    console.log('invoicedata', invoiceData)
     if (customerData.jobs[req.body.jobIndex].paid) {
         customerData.jobs[req.body.jobIndex].paid = false
     } else {
