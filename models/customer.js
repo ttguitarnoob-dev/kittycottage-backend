@@ -36,6 +36,11 @@ const customerSchema = new mongoose.Schema({
                 require: true, default: null
             },
 
+            paid: {
+                type: Boolean,
+                require: true, default: false
+            },
+
             date: {
                 type: Date,
             },

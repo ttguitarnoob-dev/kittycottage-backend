@@ -85,6 +85,8 @@ router.put('/:id', async (req, res) => {
     res.json(updatedItem)
 })
 
+//Edit Job
+
 //Add invoice ID
 router.put('/invoice-id/:id', async (req, res) => {
     const clientData = await Customer.findById(req.params.id)
@@ -95,6 +97,8 @@ router.put('/invoice-id/:id', async (req, res) => {
     // console.log('here is my body', req.body)
     res.json(updateCustomer)
 })
+
+
 
 
 module.exports = router
