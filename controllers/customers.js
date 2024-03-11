@@ -1,5 +1,6 @@
 const express = require('express')
 const Customer = require('../models/customer')
+const Invoice = require('../models/invoice')
 const router = express.Router()
 
 
@@ -99,10 +100,14 @@ router.put('/invoice-id/:id', async (req, res) => {
 
 //Update Paid
 router.put('/update-paid/:id', async (req, res) => {
-    
     let customerData = await Customer.findById(req.params.id)
-    customerData.jobs[req.body.jobIndex].paid = true
-    console.log('update route', customerData.jobs[req.body.jobIndex])
+    let invoiceData = await Invoice.findById(customerData.jobs[req.body.jobIndex].invoiceID)
+    console.log('customerdata', customerData.jobs[req.body.jobIndex].invoiceID)
+    if (customerData.jobs[req.body.jobIndex].paid) {
+        customerData.jobs[req.body.jobIndex].paid = false
+    } else {
+        customerData.jobs[req.body.jobIndex].paid = true
+    }
     const updateCustomer = await Customer.findByIdAndUpdate(req.params.id, customerData, { new :true})
     res.send(updateCustomer)
 })
