@@ -33,7 +33,8 @@ router.get('/:id', async (req, res) => {
                     date: oneJob.date,
                     services: oneJob.services,
                     totalPrice: oneJob.totalPrice,
-                    jobNotes: oneJob.jobNotes
+                    jobNotes: oneJob.jobNotes,
+                    paid: oneJob.paid
                 }
             )
         })
@@ -85,19 +86,26 @@ router.put('/:id', async (req, res) => {
     res.json(updatedItem)
 })
 
-//Edit Job
 
 //Add invoice ID
+
 router.put('/invoice-id/:id', async (req, res) => {
     const clientData = await Customer.findById(req.params.id)
     clientData.jobs[req.body.jobIndex]['invoiceID'] = req.body.invoiceID
     console.log('customerdata', clientData)
     const updateCustomer = await Customer.findByIdAndUpdate(req.params.id, clientData, { new :true})
-    // const sendybackdata = {stinkass: "you did it man", thedata: req.body}
-    // console.log('here is my body', req.body)
     res.json(updateCustomer)
 })
 
+//Update Paid
+router.put('/update-paid/:id', async (req, res) => {
+    
+    let customerData = await Customer.findById(req.params.id)
+    customerData.jobs[req.body.jobIndex].paid = true
+    console.log('update route', customerData.jobs[req.body.jobIndex])
+    const updateCustomer = await Customer.findByIdAndUpdate(req.params.id, customerData, { new :true})
+    res.send(updateCustomer)
+})
 
 
 
