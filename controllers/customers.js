@@ -104,7 +104,7 @@ router.put('/update-paid/:id', async (req, res) => {
     let invoiceData = await Invoice.findById(customerData.jobs[req.body.jobIndex].invoiceID)
     if (customerData.jobs[req.body.jobIndex].paid) {
         customerData.jobs[req.body.jobIndex].paid = false
-        invoiceData.paid = FontFaceSetLoadEvent
+        invoiceData.paid = false
     } else {
         customerData.jobs[req.body.jobIndex].paid = true
         invoiceData.paid = true
