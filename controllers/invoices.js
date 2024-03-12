@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const oneInvoice = await Invoice.findById(req.params.id)
-        console.log('id?', req.params.id)
+        console.log('invoice id?', req.params.id)
         res.json(oneInvoice)
     } catch (err) {
         console.log('something broke when fetching one', err)
@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
 
     // res.send("Hello from journal post route")
     try {
-        console.log('hitting create route yayaya', req.body)
+        console.log('hitting invoice create route yayaya')
         const createdInvoice = await Invoice.create(req.body)
         res.json({
             status: 200,
@@ -67,6 +67,7 @@ router.delete('/:id', async (req, res) => {
 router.put('/:id', async (req, res) => {
     try {
         const updatedItem = await Invoice.findByIdAndUpdate(req.params.id, req.body, {new: true})
+        console.log('invoice updating')
         res.json(updatedItem)
     } catch (err) {
         res.status(400).json({
