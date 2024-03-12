@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
     // res.send("Hello from journal index route")
     try {
         const allCustomers = await Customer.find()
-        console.log('hello from index route', allCustomers)
+        console.log('hello from customer index route')
         res.json(allCustomers)
     } catch (err) {
         res.send("index route error", err)
