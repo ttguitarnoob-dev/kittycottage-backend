@@ -101,7 +101,8 @@ router.put('/invoice-id/:id', async (req, res) => {
 //Update Paid
 router.put('/update-paid/:id', async (req, res) => {
     let customerData = await Customer.findById(req.params.id)
-    let invoiceData = await Invoice.findById(customerData.jobs[req.body.jobIndex].invoiceID)
+    const invoiceID = customerData.jobs[req.body.jobIndex].invoiceID
+    let invoiceData = await Invoice.findById(invoiceID)
     if (customerData.jobs[req.body.jobIndex].paid) {
         customerData.jobs[req.body.jobIndex].paid = false
         invoiceData.paid = false
@@ -111,8 +112,9 @@ router.put('/update-paid/:id', async (req, res) => {
     }
     console.log('invoicedata', invoiceData.paid)
     const updateCustomer = await Customer.findByIdAndUpdate(req.params.id, customerData, { new :true})
-    const updateInvoice = await Invoice.findByIdAndUpdate(req.params.id, invoiceData, { new :true})
-    res.send({customer: updateCustomer, invoice: updateInvoice})
+    const updateInvoice = await Invoice.findByIdAndUpdate(invoiceID, invoiceData, { new :true})
+    console.log('invoicedata we are sending')
+    res.json({customer: updateCustomer, invoice: updateInvoice})
 })
 
 
