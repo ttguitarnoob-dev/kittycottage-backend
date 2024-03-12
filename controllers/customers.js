@@ -115,7 +115,7 @@ router.put('/update-paid/:id', async (req, res) => {
     console.log('invoice paid?', invoiceData.paid)
     const updateCustomer = await Customer.findByIdAndUpdate(req.params.id, customerData, { new :true})
     const updateInvoice = await Invoice.findByIdAndUpdate(invoiceID, invoiceData, { new :true})
-    console.log('invoicedata we are sending')
+    console.log('both invoices should be updated')
     res.json({customer: updateCustomer, invoice: updateInvoice})
 })
 
