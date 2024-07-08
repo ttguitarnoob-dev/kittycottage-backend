@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
             )
         })
         console.log("hello from budget index route")
-        res.json(parsedBudget)
+        res.json(parsedBudget.reverse())
     } catch (err) {
         res.send("index route error", err)
     }
