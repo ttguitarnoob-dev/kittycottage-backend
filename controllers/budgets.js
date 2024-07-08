@@ -90,7 +90,7 @@ router.post('/', async (req, res) => {
             bills: [
                 {
                     billName: "Rent",
-                    howMuch: 1600,
+                    howMuch: 1150,
                     dueDate: new Date(`${selectedMonth} 1, ${currentYear}`),
                     paidDate: null,
                     paid: false
@@ -102,27 +102,27 @@ router.post('/', async (req, res) => {
                     paidDate: null,
                     paid: false
                 },
-                {
-                    billName: "Internet",
-                    howMuch: 84.99,
-                    dueDate: new Date(`${selectedMonth} 11, ${currentYear}`),
-                    paidDate: null,
-                    paid: false
-                },
-                {
-                    billName: "Trash",
-                    howMuch: 36.50,
-                    dueDate: new Date(`${selectedMonth} 2, ${currentYear}`),
-                    paidDate: null,
-                    paid: false
-                },
-                {
-                    billName: "Insurance",
-                    howMuch: 22.91,
-                    dueDate: new Date(`${selectedMonth} 11, ${currentYear}`),
-                    paidDate: null,
-                    paid: false
-                },
+                // {
+                //     billName: "Internet",
+                //     howMuch: 84.99,
+                //     dueDate: new Date(`${selectedMonth} 11, ${currentYear}`),
+                //     paidDate: null,
+                //     paid: false
+                // },
+                // {
+                //     billName: "Trash",
+                //     howMuch: 36.50,
+                //     dueDate: new Date(`${selectedMonth} 2, ${currentYear}`),
+                //     paidDate: null,
+                //     paid: false
+                // },
+                // {
+                //     billName: "Insurance",
+                //     howMuch: 22.91,
+                //     dueDate: new Date(`${selectedMonth} 11, ${currentYear}`),
+                //     paidDate: null,
+                //     paid: false
+                // },
             ]
         }
 
